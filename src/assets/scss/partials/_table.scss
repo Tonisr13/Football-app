@@ -1,0 +1,41 @@
+.table-default {
+    min-width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        background-color: rgb(248, 250, 252);
+
+        th {
+            padding: 12px 24px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            line-height: 20px;
+            white-space: nowrap;
+            color: $color-black;
+        }
+    }
+    tbody {
+        background-color: $color-white;
+
+        tr {
+            td {
+                padding: 16px 24px;
+                white-space: nowrap;
+                color: $color-black;
+                border-bottom: 1px solid $color-line;
+
+                a {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+            &:last-child {
+                td {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}

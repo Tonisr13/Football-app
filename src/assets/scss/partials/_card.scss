@@ -1,0 +1,22 @@
+.card {
+    max-width: 100%;
+    padding: 24px;
+    background-color: $color-white;
+    border-radius: $card-radius;
+    box-shadow: $card-shadow;
+
+    .card-title {
+        margin-bottom: 30px;
+        color: $color-black;
+
+        p {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        span {
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+.title {
+    color: $color-black;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 0.025em;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+    .title {
+        font-size: 28px;
+        line-height: 36px;
+    }
+}
