@@ -14,6 +14,11 @@ const router = createRouter({
       name: "FootballClubs",
       component: () => import("@/views/FootBallClubs.vue"),
     },
+    {
+      path: "/club-detail",
+      name: "ClubDetail",
+      component: () => import("@/views/DetailClub.vue"),
+    },
   ],
 });
 

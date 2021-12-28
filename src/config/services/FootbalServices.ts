@@ -10,7 +10,7 @@ export const getFromAreas = async (id: number) => {
     .then(response => response.data)
 }
 
-export const getProfileClub = async (id: string) => {
+export const getClubProfile = async (id: string) => {
     return await api().get(`/teams/${id}`)
     .then(response => response.data)
 }

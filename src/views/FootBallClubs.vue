@@ -1,14 +1,23 @@
 <template>
-  <h1 class="title">Footballs Clubs</h1>
+  <!-- Title -->
+  <Title title="Football Clubs" spanText="click on the club box to see more details" />
 
   <div v-if="!isLoading && teams.length > 0" class="teams-list">
-    <div v-for="team in teams" :key="team.id" class="card-list">
+    <router-link 
+      v-for="team in teams"
+      :key="team.id"
+      :to="{ path: '/club-detail', query: { team: team.id } }"
+      class="card-list"
+    >
       <TeamsContent :team="team" />
-    </div>
+    </router-link>
   </div>
 
+  <!-- If data is empty -->
+  <div v-if="!isLoading && teams.length  == 0" class="data-null">No football clubs found in this area</div>
+
   <!-- Loading List -->
-  <LoadingCardList v-else />
+  <LoadingCardList v-if="isLoading && teams.length == 0" />
 </template>
 
 <script setup lang="ts">
@@ -18,7 +27,8 @@
   import Router from '@/config/composables/Router'
   import LoadingCardList from '@/components/loading/LoadingCardList.vue'
   import TeamsContent from '@/components/content/TeamsContent.vue'
-
+  import Title from '@/components/Title.vue'
+  
   // Import router
   const { route } = Router()
 
@@ -51,5 +61,17 @@
     @media screen and(max-width: 750px) {
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }
+    .card-list {
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
+  .data-null {
+    text-align: center;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
   }
 </style>

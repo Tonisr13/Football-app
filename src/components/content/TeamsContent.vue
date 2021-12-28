@@ -33,6 +33,7 @@
 
         img {
             width: auto;
+            max-width: 100%;
             height: 100px;
             object-fit: contain;
             margin: auto;

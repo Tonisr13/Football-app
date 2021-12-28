@@ -1,5 +1,6 @@
 <template>
-  <h1 class="title">Football Data App</h1>
+  <!-- Title -->
+  <Title title="Football Data App" />
 
   <div class="card">
     <div class="card-title">
@@ -41,6 +42,7 @@
   import { IAreas } from '@/config/interfaces/AreasInterface'
   import { getAllAreas } from '@/config/services/FootbalServices'
   import LoadingTable from '@/components/loading/LoadingTable.vue'
+  import Title from '@/components/Title.vue'
 
   // Variable declaration
   const areas = ref<IAreas[]>([])
