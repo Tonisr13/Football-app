@@ -20,3 +20,10 @@
         }
     }
 }
+
+.card-list {
+    padding: 20px 15px;
+    background-color: $color-white;
+    border-radius: $card-sm-radius;
+    box-shadow: $card-shadow;
+}

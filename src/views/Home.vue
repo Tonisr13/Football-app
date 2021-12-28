@@ -19,14 +19,19 @@
     
         <tbody v-if="areas.length > 0">
           <tr v-for="area in areas" :key="area.id">
-            <td><a @click="getFootball(area.id)">{{ area.name }}</a></td>
+            <td>
+              <router-link :to="{ path: '/football-clubs', query: { area: area.id } }">
+                {{ area.name }}
+              </router-link>
+            </td>
             <td>{{ area.countryCode }}</td>
             <td>{{ area.parentArea }}</td>
           </tr>
         </tbody>
       </table>
     </div>
-  
+
+    <!-- Loading Table List -->
     <LoadingTable v-if="isLoading" />
   </div>
 </template>
@@ -34,7 +39,7 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
   import { IAreas } from '@/config/interfaces/AreasInterface'
-  import { getAllAreas, getFromAreas } from '@/config/services/FootbalServices'
+  import { getAllAreas } from '@/config/services/FootbalServices'
   import LoadingTable from '@/components/loading/LoadingTable.vue'
 
   // Variable declaration
@@ -48,13 +53,6 @@
     await getAllAreas().then(response => {
       areas.value = response.areas
       isLoading.value = false
-    })
-  }
-
-  // Function get football club
-  const getFootball = async (id: number) => {
-    await getFromAreas(id).then(response => {
-      console.log(response)
     })
   }
 
