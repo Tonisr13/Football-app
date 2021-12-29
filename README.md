@@ -1,41 +1,72 @@
-# football-app
+<div align="center">
+  <h3 align="center">Football Data App</h3>
 
-This template should help get you started developing with Vue 3 in Vite.
+  <p align="center">
+    <br />
+    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+  </p>
+</div>
 
-## Recommended IDE Setup
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Installation</a>
+    </li>
+  </ol>
+</details>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur).
 
-## Type Support for `.vue` Imports in TS
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can run `Volar: Switch TS Plugin on/off` from VSCode command palette.
+Football data app is a simple app, which displays area data, football clubs and players from football clubs.
 
-## Customize configuration
+The data of this application is get from the free API [https://www.football-data.org](https://www.football-data.org)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-## Project Setup
 
-```sh
-npm install
-```
 
-### Compile and Hot-Reload for Development
+### Built With
 
-```sh
-npm run dev
-```
+This App is built with:
 
-### Type-Check, Compile and Minify for Production
+* [Vue.js (Version 3)](https://v3.vuejs.org/)
+* [SCSS](https://sass-lang.com/)
+* [Typescript](https://www.typescriptlang.org/)
 
-```sh
-npm run build
-```
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### Lint with [ESLint](https://eslint.org/)
 
-```sh
-npm run lint
-```
+
+<!-- INSTALLATION -->
+## Installation
+
+1. Sign Up and Get a free API Key at [https://www.football-data.org](https://www.football-data.org)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/your_username/football-app.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Enter your API in `.env`
+   ```js
+   VITE_API_TOKEN_KEY = 'ENTER YOUR API'
+   ```
+5. Running application in local
+   ```sh
+   npm run dev
+   ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
