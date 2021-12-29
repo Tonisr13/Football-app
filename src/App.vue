@@ -1,6 +1,8 @@
 <template>
-  <div class="container">
-    <router-view />
+  <div class="relative">
+    <div class="container">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -8,5 +10,8 @@
   .container {
     padding-top: 80px;
     padding-bottom: 20px;
+  }
+  .relative {
+    position: relative;
   }
 </style>

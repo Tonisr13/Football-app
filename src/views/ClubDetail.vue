@@ -59,7 +59,10 @@
                     </thead>
 
                     <tbody>
-                        <tr v-for="competition in clubDetail.activeCompetitions" :key="competition.name">
+                        <tr
+                            v-for="competition in clubDetail.activeCompetitions"
+                            :key="competition.name"
+                        >
                             <td>{{ competition.name }}</td>
                             <td>{{ competition.code }}</td>
                         </tr>
@@ -88,7 +91,11 @@
 
                     <tbody>
                         <tr v-for="squad in clubDetail.squad" :key="squad.name">
-                            <td>{{ squad.name }}</td>
+                            <td>
+                                <p @click="modalOpen">
+                                    {{ squad.name }}
+                                </p>
+                            </td>
                             <td>{{ squad.nationality }}</td>
                             <td>{{ squad.position || '-' }}</td>
                             <td>
@@ -103,6 +110,13 @@
 
     <!-- Loading -->
     <LoadingClubDetail v-if="isLoading && !clubDetail" />
+
+    <!-- Modal Player -->
+    <Modal v-if="showModal" title="Player Info" @modal-close="modalClose">
+        <template #modal-body>
+            <p>Halo</p>
+        </template>
+    </Modal>
 </template>
 
 <script setup lang="ts">
@@ -111,10 +125,15 @@
     import { getClubProfile } from '@/config/services/FootbalServices'
     import { reformatDate } from '@/config/helpers/helpers'
     import Router from '@/config/composables/Router'
+    import Modals from '@/config/composables/Modal'
     import LoadingClubDetail from '@/components/loading/LoadingClubDetail.vue'
+    import Modal from '@/components/modal/Modal.vue'
 
     // Import router
     const { route } = Router()
+
+    // Import Modal
+    const { showModal, modalOpen, modalClose } = Modals()
 
     // Variable declaration
     const teamID = ref<any>(route.query.team)
