@@ -85,22 +85,18 @@
                             <th>Name</th>
                             <th>Nationality</th>
                             <th>Position</th>
-                            <th>Place & Date Of Birth</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr v-for="squad in clubDetail.squad" :key="squad.name">
                             <td>
-                                <p @click="modalOpen">
+                                <span class="text-clicked" @click="playerSelected(squad.id)">
                                     {{ squad.name }}
-                                </p>
+                                </span>
                             </td>
                             <td>{{ squad.nationality }}</td>
                             <td>{{ squad.position || '-' }}</td>
-                            <td>
-                                {{ squad.countryOfBirth + ', ' + reformatDate(squad.dateOfBirth) }}
-                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -114,7 +110,7 @@
     <!-- Modal Player -->
     <Modal v-if="showModal" title="Player Info" @modal-close="modalClose">
         <template #modal-body>
-            <p>Halo</p>
+            <ModalPlayerInfo :playerID="playerID" />
         </template>
     </Modal>
 </template>
@@ -123,11 +119,11 @@
     import { ref, onMounted } from 'vue'
     import { IClub } from '@/config/interfaces/ClubInterface'
     import { getClubProfile } from '@/config/services/FootbalServices'
-    import { reformatDate } from '@/config/helpers/helpers'
     import Router from '@/config/composables/Router'
     import Modals from '@/config/composables/Modal'
     import LoadingClubDetail from '@/components/loading/LoadingClubDetail.vue'
     import Modal from '@/components/modal/Modal.vue'
+    import ModalPlayerInfo from '@/components/modal/ModalPlayerInfo.vue'
 
     // Import router
     const { route } = Router()
@@ -138,6 +134,7 @@
     // Variable declaration
     const teamID = ref<any>(route.query.team)
     const clubDetail = ref<IClub>()
+    const playerID = ref<number>(0)
     const isLoading = ref<boolean>(true)
 
     // Function get fotball club detail
@@ -148,6 +145,12 @@
             clubDetail.value = response
             isLoading.value = false
         })
+    }
+
+    // Function set selected player
+    const playerSelected = (id: number) => {
+        playerID.value = id
+        modalOpen()
     }
 
     onMounted(() => {
@@ -201,7 +204,12 @@
         }
     }
 
-    @media screen and (max-width: 750px) {
+    .text-clicked {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
         .club-detail {
             flex-direction: column;
             align-items: flex-start;

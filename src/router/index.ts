@@ -18,12 +18,7 @@ const router = createRouter({
       path: "/club-detail",
       name: "ClubDetail",
       component: () => import("@/views/ClubDetail.vue"),
-    },
-    {
-      path: "/player-info",
-      name: "PlayerInfo",
-      component: () => import("@/views/PlayerInfo.vue"),
-    },
+    }
   ],
   scrollBehavior (to, from, savedPosition) {
     return { top: 0 }

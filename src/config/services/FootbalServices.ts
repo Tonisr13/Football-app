@@ -5,17 +5,17 @@ export const getAllAreas = async () => {
     .then(response => response.data)
 }
 
-export const getFromAreas = async (id: number) => {
+export const getFromAreas = async (id: string | number) => {
     return await api().get(`/teams/?areas=${id}`)
     .then(response => response.data)
 }
 
-export const getClubProfile = async (id: string) => {
+export const getClubProfile = async (id: string | number) => {
     return await api().get(`/teams/${id}`)
     .then(response => response.data)
 }
 
-export const getPlayerDetail = async (id: string) => {
+export const getPlayerDetail = async (id: string | number) => {
     return await api().get(`/players/${id}`)
     .then(response => response.data)
 }

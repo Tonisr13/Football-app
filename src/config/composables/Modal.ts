@@ -6,11 +6,13 @@ export default () => {
     // Function modal open
     const modalOpen = () => {
         showModal.value = true
+        document.body.style.overflow = "hidden"
     }
 
     // Function modal close
     const modalClose = (event: boolean) => {
         showModal.value = event
+        document.body.style.removeProperty("overflow")
     }
 
     return {
