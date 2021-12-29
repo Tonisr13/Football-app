@@ -58,8 +58,11 @@
     grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     grid-gap: 20px;
 
-    @media screen and(max-width: 750px) {
+    @media screen and(max-width: 768px) {
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+    @media screen and(max-width: 419px) {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
     .card-list {
       cursor: pointer;

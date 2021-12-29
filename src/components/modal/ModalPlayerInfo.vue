@@ -1,5 +1,5 @@
 <template>
-    <div v-if="player">
+    <div v-if="player && !isLoading">
         <div class="table-detail">
             <div class="list">
                 <div class="list-title">Full Name</div>
@@ -23,12 +23,16 @@
             </div>
         </div>
     </div>
+
+    <!-- Loading -->
+    <LoadingTableDetail v-if="!player && isLoading" />
 </template>
 
 <script setup lang="ts">
     import { ref, onMounted } from 'vue'
     import { getPlayerDetail } from '@/config/services/FootbalServices'
     import { IPlayer } from '@/config/interfaces/PlayerInterface'
+    import LoadingTableDetail from '../loading/LoadingTableDetail.vue'
 
     // Props declaration
     const props = defineProps({

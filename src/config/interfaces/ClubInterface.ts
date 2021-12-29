@@ -33,7 +33,7 @@ export interface ISquad {
     dateOfBirth: string;
     id: number;
     name: string;
-    nationality: string;
+    nationality?: string;
     position: string;
     role: string;
     shirtNumber?: string;

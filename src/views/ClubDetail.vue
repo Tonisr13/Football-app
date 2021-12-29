@@ -95,7 +95,7 @@
                                     {{ squad.name }}
                                 </span>
                             </td>
-                            <td>{{ squad.nationality }}</td>
+                            <td>{{ squad.nationality || '-' }}</td>
                             <td>{{ squad.position || '-' }}</td>
                         </tr>
                     </tbody>

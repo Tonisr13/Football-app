@@ -3,16 +3,7 @@
         <div class="skeleton skeleton-image"></div>
 
         <div class="info">
-            <div class="table-detail">
-                <div class="list" v-for="i in 5" :key="i">
-                    <div class="list-title">
-                        <div class="skeleton"></div>
-                    </div>
-                    <div class="list-desc">
-                        <div class="skeleton"></div>
-                    </div>
-                </div>
-            </div>
+            <LoadingTableDetail />
         </div>
     </div>
 
@@ -25,6 +16,7 @@
 
 <script setup lang="ts">
     import LoadingTable from './LoadingTable.vue'
+    import LoadingTableDetail from './LoadingTableDetail.vue';
 </script>
 
 <style lang="scss" scoped>
