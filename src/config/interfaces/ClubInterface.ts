@@ -16,7 +16,7 @@ export interface IClub {
     squad: ISquad[];
     tla: string;
     venue: string;
-    website: string;
+    website?: string;
 }
 
 export interface IActiveCompetitions {

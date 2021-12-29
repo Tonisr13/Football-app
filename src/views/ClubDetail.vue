@@ -1,5 +1,5 @@
 <template>
-    <div v-if="clubDetail">
+    <div v-if="clubDetail && !isLoading">
         <!-- Club Info -->
         <div class="club-detail">
             <div class="club-logo">
@@ -32,7 +32,7 @@
                     </div>
                     <div class="list">
                         <div class="list-title">Email</div>
-                        <div class="list-desc">{{ clubDetail.email }}</div>
+                        <div class="list-desc">{{ clubDetail.email || '-' }}</div>
                     </div>
                     <div class="list">
                         <div class="list-title">Website</div>
@@ -90,7 +90,7 @@
                         <tr v-for="squad in clubDetail.squad" :key="squad.name">
                             <td>{{ squad.name }}</td>
                             <td>{{ squad.nationality }}</td>
-                            <td>{{ squad.position }}</td>
+                            <td>{{ squad.position || '-' }}</td>
                             <td>
                                 {{ squad.countryOfBirth + ', ' + reformatDate(squad.dateOfBirth) }}
                             </td>
@@ -100,6 +100,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Loading -->
+    <LoadingClubDetail v-if="isLoading && !clubDetail" />
 </template>
 
 <script setup lang="ts">
@@ -108,6 +111,7 @@
     import { getClubProfile } from '@/config/services/FootbalServices'
     import { reformatDate } from '@/config/helpers/helpers'
     import Router from '@/config/composables/Router'
+    import LoadingClubDetail from '@/components/loading/LoadingClubDetail.vue'
 
     // Import router
     const { route } = Router()
@@ -138,7 +142,7 @@
     .club-detail {
         display: flex;
         align-items: center;
-        margin-bottom: 80px;
+        margin-bottom: 60px;
 
         .club-logo {
             width: 220px;
