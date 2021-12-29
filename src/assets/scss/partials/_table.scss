@@ -40,3 +40,33 @@
         }
     }
 }
+
+.table-detail {
+    width: 100%;
+    overflow: auto;
+
+    .list {
+        display: flex;
+        margin-bottom: 12px;
+        color: $color-black;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &-title {
+            flex: none;
+            width: 10%;
+            min-width: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            margin-right: 30px;
+        }
+        &-desc {
+            flex: 1 1 0%;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+        }
+    }
+}

@@ -17,9 +17,12 @@ const router = createRouter({
     {
       path: "/club-detail",
       name: "ClubDetail",
-      component: () => import("@/views/DetailClub.vue"),
+      component: () => import("@/views/ClubDetail.vue"),
     },
   ],
+  scrollBehavior (to, from, savedPosition) {
+    return { top: 0 }
+  }
 });
 
 export default router;
