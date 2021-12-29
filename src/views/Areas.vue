@@ -8,6 +8,15 @@
       <span>Click Country name to see all football clubs from selected area</span>
     </div>
 
+    <!-- Search -->
+    <input
+      class="input-search"
+      type="text"
+      placeholder="Search Area Name"
+      v-model="search"
+      @keyup="searchData()"
+    >
+
     <div class="overflow-auto" v-if="!isLoading">
       <table class="table-default">
         <thead>
@@ -34,6 +43,7 @@
 
     <!-- Pagination -->
     <Pagination
+      v-if="!isLoading && !isSearch"
       :page="page"
       :totalPage="totalPage"
       @page-next="nextPage"
@@ -51,12 +61,15 @@
   import { getAllAreas } from '@/config/services/FootbalServices'
   import LoadingTable from '@/components/loading/LoadingTable.vue'
   import Title from '@/components/Title.vue'
-import Pagination from '@/components/Pagination.vue'
+  import Pagination from '@/components/Pagination.vue'
 
   // Variable declaration
+  const isSearch = ref<boolean>(false)
+  const search = ref<string>('')
   const page = ref<number>(1)
   const totalPage = ref<number>(1)
   const areas = ref<IAreas[]>([])
+  const realAreasData = ref<IAreas[]>([])
   const areasChunk = ref<IAreas[][]>([])
   const isLoading = ref<boolean>(true)
   
@@ -65,6 +78,7 @@ import Pagination from '@/components/Pagination.vue'
     isLoading.value = true
 
     await getAllAreas().then(response => {
+      realAreasData.value = response.areas
       areasChunk.value = chunkArray(response.areas, 20)
       totalPage.value = areasChunk.value.length
       setDataPage()
@@ -96,6 +110,23 @@ import Pagination from '@/components/Pagination.vue'
     }
   }
 
+  // Function search data
+  const searchData = () => {
+    let result: IAreas[] = []
+
+    if (search.value.length > 3) {
+      result = realAreasData.value.filter(area => 
+        area.name.toLowerCase().indexOf(search.value.toLowerCase()) > -1
+      )
+      isSearch.value = true
+      areas.value = result
+    }
+    else {
+      setDataPage()
+      isSearch.value = false
+    }
+  }
+
   // Function next page
   const nextPage = () => {
     page.value++
@@ -112,3 +143,14 @@ import Pagination from '@/components/Pagination.vue'
     getAreas()
   })
 </script>
+
+<style lang="scss" scoped>
+  .input-search {
+    width: calc(100% - 40px);
+    height: 34px;
+    border-radius: 17px;
+    padding: 0 20px;
+    border: 1px solid rgb(173, 173, 173);
+    margin-bottom: 30px;
+  }
+</style>
