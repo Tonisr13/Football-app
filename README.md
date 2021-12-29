@@ -3,7 +3,7 @@
 
   <p align="center">
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://footballdata-app.herokuapp.com/">View Demo</a>
   </p>
 </div>
 
@@ -60,7 +60,7 @@ This App is built with:
    ```sh
    npm install
    ```
-4. Enter your API in `.env`
+4. Enter your API KEY in `.env`
    ```js
    VITE_API_TOKEN_KEY = 'ENTER YOUR API'
    ```
